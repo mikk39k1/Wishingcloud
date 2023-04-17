@@ -4,7 +4,6 @@ import com.example.ourwishlist.model.Item;
 import com.example.ourwishlist.model.User;
 import com.example.ourwishlist.service.FriendsListService;
 import com.example.ourwishlist.service.WishListService;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -22,7 +21,7 @@ public class HomepageController {
 
     @GetMapping("/")
     public String landingScreen() {
-        return "/landingscreen";
+        return "home/landingscreen";
     }
 
 
