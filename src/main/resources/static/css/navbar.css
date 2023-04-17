@@ -1,0 +1,49 @@
+/*Navbar section*/
+header {
+    font-family: 'Karla', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 3px 1px #e0e0e0;
+    height: 65px;
+}
+
+.headerContainer {
+    position: absolute;
+    color: #1098C6;
+}
+
+header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1098C6;
+}
+
+.optionsContainer {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    padding-right: 5rem;
+}
+
+header h4 {
+    font-size: 15px;
+    font-weight: 500;
+    padding-right: 50px;
+}
+
+#user {
+    padding-left: 20px;
+}

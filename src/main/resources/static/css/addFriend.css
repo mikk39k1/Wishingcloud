@@ -1,0 +1,70 @@
+/* addFriend.css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+main {
+    flex-direction: column;
+}
+
+.addFriendContainer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.friendListContainer {
+    width: 70%;
+    margin: 50px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    width: 50%;
+    max-width: 500px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form label, .form input {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 300px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.buttonContainer {
+    display: flex;
+}
+

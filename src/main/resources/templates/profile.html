@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="/css/profile.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/buttonstyle.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbarContainer">
+        <div>
+            <h4 id="user" th:text="'Welcome Back: ' + ${session.user.getUsername()}"></h4>
+        </div>
+        <div class="headerContainer">
+            <a href="/homepage"><h1>WISHING CLOUD</h1></a>
+        </div>
+        <div class="optionsContainer">
+            <a href="/homepage"><h4>MY WISHLIST</h4></a>
+            <a href="/addFriend"><h4>ADD FRIEND</h4></a>
+            <a href="/friendrequest"><h4>FRIEND REQUESTS</h4></a>
+            <a href="/logout"><h4>LOGOUT</h4></a>
+        </div>
+    </nav>
+</header>
+<div class="profile-container">
+
+    <img class="icon-image" src="/img/personicontrans.png" alt="Icon">
+
+    <p>First Name:</p>
+    <span th:text="${user.getFirstName()}"></span>
+    <div class="underline"></div>
+    <p>Last Name:</p>
+    <span th:text="${user.getLastName()}"></span>
+    <div class="underline"></div>
+    <p>Email:</p>
+    <span th:text="${user.getEmail()}"></span>
+    <div class="underline"></div>
+    <p>Address:</p>
+    <span th:text="${user.getAddress()}"></span>
+    <div class="underline"></div>
+    <p>Username:</p>
+    <span th:text="${user.getUsername()}"></span>
+    <div class="underline"></div>
+    <p>Password:</p>
+    <span th:text="${user.getPasswd()}"></span>
+    <div class="underline"></div>
+    <a href="/editprofile"><button class="btn">Edit Info</button></a>
+</div>
+
+</body>
+</html>

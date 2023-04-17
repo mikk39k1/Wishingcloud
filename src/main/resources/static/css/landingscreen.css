@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Karla', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Main Section */
+.landingscreenImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heroContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10rem 0 10rem;
+}
+
+.heroImage {
+  max-height: 600px;
+  width: auto;
+}
+
+.heroTextContainer {
+  text-align: center;
+  line-height: 2em;
+  width: 30%
+}
+
+.heroTextContainer h1 {
+  font-size: 35px;
+}
+
+.heroTextContainer p {
+  font-size: 18px;
+  padding-top: 2px;
+}
+
+
+/* Create wishlist section */
+.createWishListHeroContainer {
+  background-image: url("../img/CreateWishListImg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 80vh;
+  width: auto;
+
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20%;
+  margin-bottom: 10rem;
+}
+
+
+
+/* Footer */
+.horizontalLine {
+  border-width: thin;
+  border-color: #e0e0e0;
+  width: 100%;
+  border-style: solid;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.footerContainer h4 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.footerContainer h5 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied</title>
+    <link rel="stylesheet" type="text/css" href="/css/accessDenied.css">
+    <link rel="stylesheet" type="text/css" href="/css/buttonstyle.css">
+</head>
+<body>
+<div class="container">
+    <div class="message">
+        <h1>Access Denied</h1>
+        <p>Sorry, you don't have permission to access this page.</p>
+    </div>
+    <div class="actions">
+        <a th:href="@{authorization/login}"><button>Login</button></a>
+        <a th:href="@{authorization/register}"><button>Register</button></a>
+    </div>
+    <div>
+        <a href="/"><button>Back to homepage</button></a>
+    </div>
+</div>
+</body>
+</html>

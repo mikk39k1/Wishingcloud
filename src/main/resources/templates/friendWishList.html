@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/friendWishListStyleSheet.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/buttonstyle.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/friendslist.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <title>Friend WishList</title>
+</head>
+<body>
+
+<header>
+    <nav class="navbarContainer">
+        <div>
+            <h4 id="user" th:text="'Welcome Back: ' + ${session.user.username}"></h4>
+        </div>
+        <div class="headerContainer">
+            <a href="/homepage"><h1>WISHING CLOUD</h1></a>
+        </div>
+        <div class="optionsContainer">
+            <a href="/homepage"><h4>MY WISHLIST</h4></a>
+            <a href="/addFriend"><h4>ADD FRIEND</h4></a>
+            <a href="/profile"><h4>PROFILE</h4></a>
+            <a href="/friendrequest"><h4>FRIEND REQUESTS</h4></a>
+            <a href="/logout"><h4>LOGOUT</h4></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <H2> <span th:text="${friend.firstName}"></span> WISHLIST</H2>
+    <div class="tableContainer">
+        <table>
+            <thead>
+            <tr>
+                <th>WISH ITEM</th>
+                <th>WISH AMOUNT</th>
+                <th>WISH ACTION RESERVE WISH</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="wish: ${friendWishList}">
+                <td th:text="${wish.entityName}"></td>
+                <td th:text="${wish.entityAmount}"></td>
+                <td th:if="${wish.reserveAccountId == null}">
+                    <form action="/reserveWish" method="post">
+                            <input type="hidden" name="friendId" th:value="${friend.accountsId}">
+                        <input type="hidden" name="wishentityId" th:value="${wish.wishentityId}">
+                        <button type="submit">RESERVE THIS WISH</button>
+                    </form>
+                </td>
+                <td th:if="${wish.reserveAccountId != null && wish.reserveAccountId != session.user.accountsId}">THIS WISH IS RESERVED</td>
+                <td th:if="${wish.reserveAccountId == session.user.accountsId}">
+                    <form action="/unReserveWish" method="post">
+                        <input type="hidden" name="friendId" th:value="${friend.accountsId}">
+                        <input type="hidden" name="wishentityId" th:value="${wish.wishentityId}">
+                        <button id="unReserve" type="submit">REMOVE YOUR RESERVE</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<div>
+    <link th:href="@{/css/friendslist.css}" rel="stylesheet">
+    <div class="box">
+        <a href="#popup1"><button class="buttonstyle">View Friends</button></a>
+    </div>
+
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Friends</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="friendslisttable">
+                <table class="popTableContainer">
+                    <tbody>
+                    <tr th:each="friend: ${friendsList}">
+                        <td th:text="${friend.firstName}"></td>
+                        <td th:text="${friend.lastName}"></td>
+                        <td>
+                            <a th:href="@{'/friendWishList/'+${friend.accountsId}}">
+                                <button>View Wishlist</button>
+                            </a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

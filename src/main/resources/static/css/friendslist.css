@@ -1,0 +1,78 @@
+.box {
+    width: 15%;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.2);
+    padding: 35px;
+    border: 2px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    text-align: center;
+}
+
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: auto;
+    transition: all 0.5s ease-in-out; /* */
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup {
+    background-color: white;
+    margin: auto;
+    height: 50%;
+    border: solid black;
+    border-radius: 5px;
+    width: 22%;
+    position: fixed;
+    transition: all 5s ease-in-out;
+    bottom: 0;
+    right: 5px;
+}
+
+.popup h2 {
+    color: white;
+    background-color: black;
+    width: 100%;
+    display: block;
+    margin-top: -3px;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.popup .close {
+    position: absolute;
+    top: 11px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #cecece;
+}
+.popup .close:hover {
+    color: #06D85F;
+}
+
+.popTableContainer {
+    background-color: white;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}

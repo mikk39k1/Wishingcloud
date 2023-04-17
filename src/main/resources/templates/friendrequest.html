@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Request</title>
+    <link rel="stylesheet" type="text/css" href="/css/addFriend.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/buttonstyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbarContainer">
+        <div>
+            <h4 id="user" th:text="'Welcome back: ' + ${session.user.username}"></h4>
+        </div>
+        <div class="headerContainer">
+            <a href="/homepage"><h1>WISHING CLOUD</h1></a>
+        </div>
+        <div class="optionsContainer">
+            <a href="/homepage"><h4>MY WISHLIST</h4></a>
+            <a href="/addFriend"><h4>ADD FRIEND</h4></a>
+            <a href="/profile"><h4>PROFILE</h4></a>
+            <a href="/logout"><h4>LOGOUT</h4></a>
+        </div>
+    </nav>
+</header>
+
+<div class="friendListContainer" th:style="${requests != null and !requests.isEmpty()} ? '' : 'display: none;'">
+    <h1>Friend Requests</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request: ${requests}">
+                <td th:text="${request.firstName}"></td>
+                <td th:text="${request.lastName}"></td>
+
+                <td>
+                    <div class="buttonContainer">
+                        <form action="/acceptRequest" method="post">
+                            <input type="hidden" name="friendId" th:value="${request.getAccountsId()}">
+                            <button type="submit" th:text="${request.friendRequestStatus == 'sent' ? 'Pending' : 'Accept'}"
+                                    th:disabled="${request.friendRequestStatus == 'sent'}"
+                                    th:id="${request.friendRequestStatus == 'sent' ? 'orangebutton' : ''}"></button>
+                        </form>
+                        <form action="/deleteRequest" method="post">
+                            <input type="hidden" name="friendId" th:value="${request.getAccountsId()}">
+                            <button type="submit" th:text="${request.friendRequestStatus == 'sent' ? 'Withdraw' : 'Decline'}"
+                                    th:id="${request.friendRequestStatus == 'sent' ? '' : 'redbutton'}"></button>
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+
+</body>
+</html>

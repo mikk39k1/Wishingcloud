@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Friend</title>
+    <link rel="stylesheet" type="text/css" href="/css/addFriend.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/buttonstyle.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbarContainer">
+        <div>
+            <h4 id="user" th:text="'Welcome Back: ' + ${session.user.getUsername()}"></h4>
+        </div>
+        <div class="headerContainer">
+            <a href="/homepage"><h1>WISHING CLOUD</h1></a>
+        </div>
+        <div class="optionsContainer">
+            <a href="/homepage"><h4>MY WISHLIST</h4></a>
+            <a href="/profile"><h4>PROFILE</h4></a>
+            <a href="/friendrequest"><h4>FRIEND REQUESTS</h4></a>
+            <a href="/logout"><h4>LOGOUT</h4></a>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="addFriendContainer">
+        <h1>Search New Friend</h1>
+        <form class="form" action="/searchFriend" method="post">
+            <label for="search-input"></label>
+            <input type="text" id="search-input" placeholder="Enter name" name="friendName">
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+    <div class="friendListContainer" th:style="${friendsList != null and !friendsList.isEmpty()} ? '' : 'display: none;'">
+        <h1 th:if="${searchedName != null}" th:text="'Results for: ' + ${searchedName}"></h1>
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="friend: ${friendsList}">
+                <td th:text="${friend.firstName}"></td>
+                <td th:text="${friend.lastName}"></td>
+                <td>
+                    <form action="/addFriendAction" method="post">
+                        <input type="hidden" name="friendId" th:value="${friend.accountsId}">
+                        <input type="hidden" name="requestStatus" th:value="${friend}">
+                        <button type="submit" id="greenbutton" class="btn" th:if="${friend.friendRequestStatus == 'none'}">Add Friend</button>
+                        <button type="button" id="orangebutton" class="btn" th:disabled="${friend.friendRequestStatus == 'sent'}" th:if="${friend.friendRequestStatus == 'sent'}">Pending</button>
+                        <a href="/friendrequest"><button type="button" class="btn" th:if="${friend.friendRequestStatus == 'received'}">Waiting for accept</button></a>
+                        <button type="button" class="btn" th:if="${friend.friendRequestStatus == 'friends'}">Friends</button>
+                        <a th:href="@{/deleteFriend(friendId=${friend.accountsId})}">
+                            <button type="button" id="redbutton" class="btn" th:if="${friend.friendRequestStatus == 'friends'}">Delete Friend</button>
+                        </a>
+
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

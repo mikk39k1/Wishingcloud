@@ -1,0 +1,28 @@
+button {
+    font-family: 'Karla', sans-serif;
+    border: none;
+    color: white;
+    background: #1098C6;
+    padding: 13px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 5px;
+    width: 7rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background: #0c85ad;
+}
+
+#orangebutton {
+    background-color: #ff8d00;
+}
+
+#redbutton {
+    background-color: darkred;
+}
+
+#greenbutton {
+    background-color: #06D85F;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="/css/Register.css" rel="stylesheet">
+    <link href="/css/buttonstyle.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="form-container">
+    <div class="title-container">
+        <h1 class="title">WISHING CLOUD</h1>
+    </div>
+    <div class="inputContainer">
+        <form class="form" action="/registerNewUser" method="post" th:object="${user}">
+            <div>
+                <label for="firstName">First Name:</label><br>
+                <input type="text" id="firstName" th:fields="*{firstName}" name="firstName">
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label><br>
+                <input type="text" id="lastName" th:fields="*{lastName}" name="lastName">
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" th:fields="*{email}" name="email">
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Must enter valid email</p>
+            </div>
+            <div>
+                <label for="address">Address:</label><br>
+                <input type="text" id="address" th:fields="*{address}" name="address">
+                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Not a valid address</p>
+            </div>
+            <div>
+                <label for="username">Username:</label><br>
+                <input class="username-input" id="username" th:field="*{username}" type="text" name="username">
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Not a valid username</p>
+            </div>
+            <div>
+                <label for="passwd">Password:</label><br>
+                <input class="passwd-input" id="passwd" th:field="*{passwd}" type="password" name="passwd">
+                <p th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}">Wrong password</p>
+            </div>
+            <button class="btn" id="registerBtn" type="submit">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link href="/css/profile.css" rel="stylesheet">
+  <link href="/css/navbar.css" rel="stylesheet">
+  <link href="/css/buttonstyle.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <nav class="navbarContainer">
+    <div>
+      <h4 id="user" th:text="'Welcome Back: ' + ${session.user.getUsername()}"></h4>
+    </div>
+    <div class="headerContainer">
+      <a href="/homePage"><h1>WISHING CLOUD</h1></a>
+    </div>
+    <div class="optionsContainer">
+      <a href="/homepage"><h4>MY WISHLIST</h4></a>
+      <a href="/profile"><h4>PROFILE</h4></a>
+      <a href="/friendrequest"><h4>FRIEND REQUESTS</h4></a>
+      <a href="/logout"><h4>LOGOUT</h4></a>
+    </div>
+  </nav>
+</header>
+
+<div class="profile-container">
+
+  <img class="icon-image" src="/img/personicontrans.png" alt="Icon">
+
+  <div class="form-container">
+    <form class="form" action="/editUser" method="post">
+      <div>
+        <p>First Name:</p>
+        <input type="text" th:value="${user.getFirstName()}" name="firstName" id="first_name">
+      </div>
+      <div>
+        <p>Last Name:</p>
+        <input type="text" th:value="${user.getLastName()}" name="lastName" id="last_name">
+      </div>
+      <div>
+        <p>Email:</p>
+        <input type="text" th:value="${user.getEmail()}" name="email" id="email">
+      </div>
+      <div>
+        <p>Address:</p>
+        <input type="text" th:value="${user.getAddress()}" name="address" id="address">
+      </div>
+      <div>
+        <p>Username:</p>
+        <input type="text" th:value="${user.getUsername()}" name="username" id="username">
+      </div>
+      <div>
+        <p>Password:</p>
+        <input type="text" th:value="${user.getPasswd()}" name="passwd" id="passwd">
+      </div>
+      <button class="btn" type="submit">SAVE CHANGES</button>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>
